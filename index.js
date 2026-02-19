@@ -5,13 +5,14 @@
 // Returnează exact mesajul: "Salut [nume], este ora [ora]!"
 function s1_templating(nume, ora) {
     // Codul tău aici
-    return `Salut ${nume}, este ora ${ora}!`;
+
 }
 
 // Ex 1.2: Înlocuire cuvinte
 // Primești un text. Folosește metoda corectă pentru a înlocui `cuvantVechi` cu `cuvantNou`.
 function s1_inlocuire(text, cuvantVechi, cuvantNou) {
     // Codul tău aici
+    return text.replace(cuvantVechi, cuvantNou);
 }
 
 // Ex 1.3: Despărțire în listă
@@ -87,7 +88,6 @@ function s4_numaraFalsy(lista) {
     // Codul tău aici
 }
 
--
 // CAPITOLUL 5: Referințe și Copieri
 
 
