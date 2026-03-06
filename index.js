@@ -5,7 +5,7 @@
 // Returnează exact mesajul: "Salut [nume], este ora [ora]!"
 function s1_templating(nume, ora) {
     // Codul tău aici
-
+    return "Salut " + nume + ", este ora " + ora + "!";
 }
 
 // Ex 1.2: Înlocuire cuvinte
@@ -20,6 +20,7 @@ function s1_inlocuire(text, cuvantVechi, cuvantNou) {
 // Transformă-l într-o listă (array) și returnează-o.
 function s1_despartire(text) {
     // Codul tău aici
+    return text.split(",");
 }
 
 // CAPITOLUL 2: Obiecte
@@ -29,6 +30,10 @@ function s1_despartire(text) {
 // cu valorile primite ca parametri.
 function s2_creareObiect(nume, varsta) {
     // Codul tău aici
+    return {
+        nume: nume,
+        varsta: varsta
+    }
 }
 
 // Ex 2.2: Adăugare Proprietate
@@ -36,6 +41,8 @@ function s2_creareObiect(nume, varsta) {
 // și valoarea `valoare`. Returnează obiectul modificat.
 function s2_adaugaProprietate(obj, cheie, valoare) {
     // Codul tău aici
+    obj[cheie] = valoare;
+    return obj;
 }
 
 // Ex 2.3: Ștergere Proprietate
@@ -43,7 +50,9 @@ function s2_adaugaProprietate(obj, cheie, valoare) {
 // proprietatea numită `cheie` din el, apoi returnează obiectul.
 function s2_stergeProprietate(obj, cheie) {
     // Codul tău aici
-}
+    delete obj[cheie];
+    return obj;
+}   
 
 // CAPITOLUL 3: Liste (Arrays)
 
@@ -51,6 +60,9 @@ function s2_stergeProprietate(obj, cheie) {
 // Scoate ULTIMUL element din listă și adaugă `elementNou` la sfârșitul ei.
 function s3_pushPop(lista, elementNou) {
     // Codul tău aici
+    lista.pop();
+    lista.push(elementNou);
+    return lista;
 }
 
 // Ex 3.2: Extragere (Slice)
@@ -58,12 +70,14 @@ function s3_pushPop(lista, elementNou) {
 // elementele de la indexul `start` până la `end` (neinclus).
 function s3_extragere(lista, start, end) {
     // Codul tău aici
+    return lista.slice(start, end);
 }
 
 // Ex 3.3: Transformare în String (Join)
 // Unește toate elementele listei primite într-un singur string, separate prin `separator`.
 function s3_transformareString(lista, separator) {
     // Codul tău aici
+    return lista.join(separator);
 }
 
 
@@ -74,18 +88,25 @@ function s3_transformareString(lista, separator) {
 // Returnează valoarea booleană `true` dacă parametrul este Truthy, și `false` dacă e Falsy.
 function s4_isTruthy(valoare) {
     // Codul tău aici
+    return valoare ? true : false;
 }
 
 // Ex 4.2: Lista goală
 // Verifică în mod corect dacă o listă este goală. Returnează true/false.
 function s4_isListaGoala(lista) {
     // Codul tău aici
+    return lista.length == 0;
 }
 
 // Ex 4.3: Numără Falsy
 // Parcurge lista primită și numără CÂTE elemente sunt Falsy. Returnează numărul.
 function s4_numaraFalsy(lista) {
     // Codul tău aici
+    let res = 0;
+    for(let el of lista)
+        if(!el)
+            res++;
+    return res;
 }
 
 // CAPITOLUL 5: Referințe și Copieri
@@ -95,18 +116,21 @@ function s4_numaraFalsy(lista) {
 // Returnează exact același obiect primit (fără să-l copiezi).
 function s5_referinta(obj) {
     // Codul tău aici
+    return obj;
 }
 
 // Ex 5.2: Shallow Copy
 // Folosește sintaxa modernă (...) pentru a crea și returna un Shallow Copy al obiectului.
 function s5_shallowCopy(obj) {
     // Codul tău aici
+    return {...obj};
 }
 
 // Ex 5.3: Deep Copy
 // Folosește JSON.parse și JSON.stringify pentru a crea și returna un Deep Copy izolat complet.
 function s5_deepCopy(obj) {
     // Codul tău aici
+    return JSON.parse(JSON.stringify(obj));
 }
 
 
@@ -116,6 +140,7 @@ function s5_deepCopy(obj) {
 // Scrie codul pentru a returna rezultatul înmulțirii celor două numere.
 function s6_inmultire(a, b) {
     // Codul tău aici
+    return a * b;
 }
 
 // Ex 6.2: Arrow Function
@@ -123,6 +148,9 @@ function s6_inmultire(a, b) {
 // de tip Arrow Function `() => {}` și să calculeze suma a doi parametri x și y.
 function s6_returneazaArrow() {
     // Codul tău aici
+    return (x,y) => {
+        return x + y;
+    }
 }
 
 // Ex 6.3: Callbacks
@@ -130,6 +158,7 @@ function s6_returneazaArrow() {
 // valoarea primită drept argument și returnează rezultatul.
 function s6_aplicaCallback(valoare, callback) {
     // Codul tău aici
+    return callback(valoare);
 }
 
 
@@ -140,22 +169,31 @@ function cerereServer(x) { return new Promise(r => setTimeout(() => r(x * 2), 50
 
 // Ex 7.1: Return din funcție async
 // Transformă funcția în `async` și returnează parametrul `valoare`. (Va returna automat o Promisiune).
-function s7_returnAsync(valoare) {
+async function s7_returnAsync(valoare) {
     // Codul tău aici
+    return valoare;
 }
 
 // Ex 7.2: Așteaptă datele (Await)
 // Fă funcția asincronă. Folosește `await` pentru a prelua rezultatul funcției `cerereServer(5)`.
 // Returnează valoarea obținută.
-function s7_asteaptaDate() {
+async function s7_asteaptaDate() {
     // Codul tău aici
+    let res = await cerereServer(5);
+    return res;
 }
 
 // Ex 7.3: Mai multe cereri
 // Fă funcția asincronă. Execută `cerereServer(10)` și `cerereServer(20)`, 
 // așteaptă rezultatele lor, adună-le și returnează totalul.
-function s7_asteaptaDoua() {
+async function s7_asteaptaDoua() {
     // Codul tău aici
+    let promisiune1 = cerereServer(10);
+    let promisiune2 = cerereServer(20);
+    let res1 = await promisiune1;
+    let res2 = await promisiune2;
+
+    return res1 + res2;
 }
 
 
